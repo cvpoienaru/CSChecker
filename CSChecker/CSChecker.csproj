@@ -39,7 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Checker.cs" />
+    <Compile Include="Definitions\Subtest.cs" />
+    <Compile Include="Definitions\Test.cs" />
+    <Compile Include="Definitions\TestResult.cs" />
+    <Compile Include="Definitions\Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
