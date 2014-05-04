@@ -201,7 +201,14 @@ namespace CSChecker.Definitions
 				Math.Round(((double)(this.Passed * 100)) / this.Total, 2));
 			stringBuilder.AppendLine();
 
-			return stringBuilder.ToString();
+			try
+			{
+				return stringBuilder.ToString();
+			}
+			finally
+			{
+				stringBuilder.Clear();
+			}
 		}
 		#endregion *** Methods ***
 	}

@@ -62,7 +62,14 @@ namespace CSChecker.Utilities
 				stringBuilder.Append(character);
 			}
 
-			return stringBuilder.ToString();
+			try
+			{
+				return stringBuilder.ToString();
+			}
+			finally
+			{
+				stringBuilder.Clear();
+			}
 		}
 	}
 }
