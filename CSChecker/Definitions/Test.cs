@@ -39,6 +39,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using CSChecker.Utilities;
+
 namespace CSChecker.Definitions
 {
 	/// <summary>
@@ -48,6 +50,11 @@ namespace CSChecker.Definitions
 	public abstract class Test
 	{
 		#region *** Fields ***
+		/// <summary>
+		/// 
+		/// </summary>
+		private const int DefaultWidth = 80;
+
 		/// <summary>
 		/// A collection of all the subtests composing the current test.
 		/// </summary>
@@ -62,11 +69,27 @@ namespace CSChecker.Definitions
 		/// The number of subtests passed when running the current test.
 		/// </summary>
 		private int passed;
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private int width;
 		#endregion *** Fields ***
 
 
 
 		#region *** Constructors ***
+		public Test (string description, int width)
+		{
+			if (string.IsNullOrWhiteSpace(description))
+			{
+				throw new ArgumentException("Invalid description.");
+			}
+
+			this.description = description;
+			this.subtestCollection = new Queue<Subtest>(0);
+		}
+
 		/// <summary>
 		/// Initializes a new instance of CSChecker.Definitions.Test class.
 		/// </summary>
@@ -76,15 +99,11 @@ namespace CSChecker.Definitions
 		/// <exception cref="System.ArgumentException">
 		/// Exception thrown when the description argument is null, empty or contains only white spaces.
 		/// </exception>
+		/// 
 		public Test (string description)
+			: this(description, Test.DefaultWidth)
 		{
-			if (string.IsNullOrWhiteSpace(description))
-			{
-				throw new ArgumentException("Invalid description.");
-			}
-
-			this.description = description;
-			this.subtestCollection = new Queue<Subtest>(0);
+			
 		}
 		#endregion *** Constructors ***
 
@@ -163,18 +182,20 @@ namespace CSChecker.Definitions
 			// Build the digest for the current test.
 			// Add the description of the current test to the output.
 			stringBuilder.AppendLine(this.description);
+			stringBuilder.AppendLine(Printer.PrintCharacter('-', this.width));
 			for (int i = 0; i < this.subtestCollection.Count; i++)
 			{
 				// For each subtest, add the specific digest.
 				Subtest subtest = this.subtestCollection.Dequeue();
-				stringBuilder.AppendLine("\t" + subtest.ToString());
+				stringBuilder.AppendFormat("\t{0}. {1}", i + 1, subtest.ToString());
+				stringBuilder.AppendLine();
 				this.subtestCollection.Enqueue(subtest);
 			}
 
 			// Add the conclusion for the current test (number of passed tests and percentage).
-			stringBuilder.AppendLine();
+			stringBuilder.AppendLine(Printer.PrintCharacter('-', this.width));
 			stringBuilder.AppendFormat(
-				"\tPassed: {0}/{1} => {2} %",
+				"Passed: {0}/{1} => {2} %",
 				this.Passed,
 				this.Total,
 				Math.Round(((double)(this.Passed * 100)) / this.Total, 2));

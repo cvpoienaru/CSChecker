@@ -49,16 +49,6 @@ namespace CSChecker.Definitions
 	{
 		#region *** Fields ***
 		/// <summary>
-		/// The default width of the digest.
-		/// </summary>
-		private const int DefaultWidth = 150;
-
-		/// <summary>
-		/// The current width of the digest.
-		/// </summary>
-		private int width;
-
-		/// <summary>
 		/// The description of the current subtest.
 		/// </summary>
 		private string description;
@@ -77,44 +67,18 @@ namespace CSChecker.Definitions
 		/// </summary>
 		/// 
 		/// <param name="description">The description of the current subtest.</param>
-		/// <param name="width">The width of the digest.</param>
 		/// 
 		/// <exception cref="System.ArgumentException">
-		/// Exception thrown when the description argument is null, empty or contains only white spaces or
-		/// when the specified width is less than the minimum valid width.
-		/// </exception>
-		public Subtest (string description, int width)
+		/// Exception thrown when the description argument is null, empty or contains only white spaces.
+		public Subtest (string description)
 		{
 			if (string.IsNullOrWhiteSpace(description))
 			{
 				throw new ArgumentException("Invalid description.");
 			}
 
-			// The specified width must be at least equal with the minimum valid width.
-			// The minimum valid width is composed by the length of the description and the length of the
-			// result, plus 2 characters on each side. The difference between the specified width and the
-			// minimum valid width is filled up with dots.
-			int validWidth = this.description.Length + this.result.ToString().Length + 2;
-			if (width < validWidth)
-			{
-				throw new ArgumentException("The specified width is less than the minimum valid width.");
-			}
-
 			this.description = description;
-			this.width = width;
 			this.result = TestResult.Failed;
-		}
-
-		/// <summary>
-		/// Initializes a new instance of CSChecker.Definitions.Subtest class.
-		/// </summary>
-		/// 
-		/// <param name="description">The description of the current subtest.</param>
-		public Subtest (string description)
-			: this(description, Subtest.DefaultWidth)
-		{
-			// Do nothing.
-			// The call of the specified constructor is sufficient in order to get the job done.
 		}
 		#endregion *** Constructors ***
 
@@ -144,36 +108,16 @@ namespace CSChecker.Definitions
 		public abstract void Run ();
 
 		/// <summary>
-		/// Prints the specified number of dots in order to build the digest.
-		/// </summary>
-		/// 
-		/// <param name="n">The number of dots to be printed.</param>
-		/// 
-		/// <returns>A string containing the specified number of dots.</returns>
-		private string PrintDots (int n)
-		{
-			StringBuilder stringBuilder = new StringBuilder();
-
-			for (int i = 0; i < n; i++)
-			{
-				stringBuilder.Append('.');
-			}
-
-			return stringBuilder.ToString();
-		}
-
-		/// <summary>
 		/// Provides the string representation of the current subtest.
 		/// </summary>
 		/// 
 		/// <returns>Returns the string representation of the current subtest.</returns>
 		public override string ToString ()
 		{
-			int width = this.width - this.description.Length - this.result.ToString().Length - 2;
 			StringBuilder stringBuilder = new StringBuilder();
 
 			// Build the digest for the current subtest.
-			stringBuilder.AppendFormat("{0} {1} {2}", this.description, this.PrintDots(width), this.result);
+			stringBuilder.AppendFormat("[{0}] -> {1}", this.result, this.description);
 
 			try
 			{

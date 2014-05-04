@@ -39,10 +39,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSChecker.Definitions
+namespace CSChecker.Utilities
 {
-	public abstract class Unit
+	public class Printer
 	{
-		private const int DefaultWidth = 80;
+		/// <summary>
+		/// Prints the specified character for the specified number of times.
+		/// </summary>
+		/// 
+		/// <param name="character">The character to be printed.</param>
+		/// <param name="times">The number of times to print the character.</param>
+		/// 
+		/// <returns>
+		/// A string containing the the specified character for the specified number of times.
+		/// </returns>
+		public static string PrintCharacter (char character, int times)
+		{
+			StringBuilder stringBuilder = new StringBuilder();
+
+			for (int i = 0; i < times; i++)
+			{
+				stringBuilder.Append(character);
+			}
+
+			return stringBuilder.ToString();
+		}
 	}
 }
