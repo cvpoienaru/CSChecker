@@ -70,6 +70,7 @@ namespace CSChecker.Definitions
 		/// 
 		/// <exception cref="System.ArgumentException">
 		/// Exception thrown when the description argument is null, empty or contains only white spaces.
+		/// </exception>
 		public Subtest (string description)
 		{
 			if (string.IsNullOrWhiteSpace(description))

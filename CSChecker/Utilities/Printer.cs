@@ -41,7 +41,10 @@ using System.Threading.Tasks;
 
 namespace CSChecker.Utilities
 {
-	public class Printer
+	/// <summary>
+	/// 
+	/// </summary>
+	public static class Printer
 	{
 		/// <summary>
 		/// Prints the specified character for the specified number of times.
