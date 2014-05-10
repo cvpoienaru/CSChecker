@@ -74,9 +74,7 @@ namespace CSChecker.Definitions
 		public Subtest (string description)
 		{
 			if (string.IsNullOrWhiteSpace(description))
-			{
 				throw new ArgumentException("Invalid description.");
-			}
 
 			this.description = description;
 			this.result = TestResult.Failed;

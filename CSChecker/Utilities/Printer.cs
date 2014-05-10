@@ -42,7 +42,7 @@ using System.Threading.Tasks;
 namespace CSChecker.Utilities
 {
 	/// <summary>
-	/// 
+	/// Provides methods and properties for managing the output.
 	/// </summary>
 	public static class Printer
 	{
@@ -56,14 +56,19 @@ namespace CSChecker.Utilities
 		/// <returns>
 		/// A string containing the the specified character for the specified number of times.
 		/// </returns>
+		/// 
+		/// <exception cref="System.ArgumentException">
+		/// Exception thrown when the specified number of times to print the character is less than zero.
+		/// </exception>
 		public static string PrintCharacter (char character, int times)
 		{
+			if (times < 0)
+				throw new ArgumentException("The specified number of times is less than zero.");
+
 			StringBuilder stringBuilder = new StringBuilder();
 
 			for (int i = 0; i < times; i++)
-			{
 				stringBuilder.Append(character);
-			}
 
 			try
 			{

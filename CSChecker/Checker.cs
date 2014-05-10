@@ -41,7 +41,7 @@ using System.Threading.Tasks;
 
 namespace CSChecker
 {
-	public class Checker
+	public sealed class Checker
 	{
 	}
 }

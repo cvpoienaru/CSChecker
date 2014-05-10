@@ -1,4 +1,39 @@
-﻿using System;
+﻿/**************************************************************************************************
+ **************************************************************************************************
+ **************************************************************************************************
+ ***																							***
+ ***		Author:		Codrin-Victor Poienaru													***
+ ***		Email:		cvpoienaru@gmail.com													***
+ ***																							***
+ ***		Copyright (c) 2014, Codrin-Victor Poienaru.											***
+ ***		All rights reserved.																***
+ ***																							***
+ ***	Redistribution and use in source and binary forms, with or without modification,		***
+ ***	are permitted provided that the following conditions are met:							***
+ ***																							***
+ ***		* Redistributions of source code must retain the above copyright notice, this		***
+ ***		list of conditions and the following disclaimer.									***
+ ***																							***
+ ***		* Redistributions in binary form must reproduce the above copyright notice, this	***
+ ***		list of conditions and the following disclaimer in the documentation and/or			***
+ ***		other materials provided with the distribution.										***
+ ***																							***
+ ***	This software is provided by the copyright holders and contributors "as is" and any		***
+ ***	express or implied warranties, including, but not limited to, the implied warranties	***
+ ***	of merchantability and fitness for a particular purpose are disclaimed. In no event		***
+ ***	shall the copyright holder or contributors be liable for any direct, indirect,			***
+ ***	incidental, special, exemplary, or consequential damages (including, but not limited	***
+ ***	to, procurement of substitute goods or services; loss of use, data, or profits; or		***
+ ***	business interruption) however caused and on any theory of liability, whether in		***
+ ***	contract, strict liability, or tort (including negligence or otherwise) arising in		***
+ ***	any way out of the use of this software, even if advised of the possibility of such		***
+ ***	damage.																					***
+ ***																							***
+ **************************************************************************************************
+ **************************************************************************************************
+ **************************************************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +51,7 @@ namespace CSChecker.Definitions
 	{
 		#region *** Fields ***
 		/// <summary>
-		/// 
+		/// The default width of the digest.
 		/// </summary>
 		private const int DefaultWidth = 80;
 
@@ -36,7 +71,7 @@ namespace CSChecker.Definitions
 		private int passed;
 
 		/// <summary>
-		/// 
+		/// The current width of the digest.
 		/// </summary>
 		private int width;
 		#endregion *** Fields ***
@@ -44,14 +79,27 @@ namespace CSChecker.Definitions
 
 
 		#region *** Constructors ***
+		/// <summary>
+		/// Initializes a new instance of CSChecker.Definitions.Test class.
+		/// </summary>
+		/// 
+		/// <param name="description">The description of the current test.</param>
+		/// <param name="width">The width of the digest.</param>
+		/// 
+		/// <exception cref="System.ArgumentException">
+		/// Exception thrown when the description argument is null, empty or contains only white spaces or
+		/// when the specified width is less than the minimum valid width.
+		/// </exception>
 		public Test (string description, int width)
 		{
 			if (string.IsNullOrWhiteSpace(description))
-			{
 				throw new ArgumentException("Invalid description.");
-			}
+
+			if (width < Test.DefaultWidth)
+				throw new ArgumentException("The specified width is less than the minimum valid width.");
 
 			this.description = description;
+			this.width = width;
 			this.subtestCollection = new Queue<Subtest>(0);
 		}
 
@@ -60,15 +108,11 @@ namespace CSChecker.Definitions
 		/// </summary>
 		/// 
 		/// <param name="description">The description of the current test.</param>
-		/// 
-		/// <exception cref="System.ArgumentException">
-		/// Exception thrown when the description argument is null, empty or contains only white spaces.
-		/// </exception>
-		/// 
 		public Test (string description)
 			: this(description, Test.DefaultWidth)
 		{
-			
+			// Do nothing.
+			// The call of the specified constructor is sufficient in order to get the job done.
 		}
 		#endregion *** Constructors ***
 
@@ -107,9 +151,7 @@ namespace CSChecker.Definitions
 		protected void AddSubtest (Subtest subtest)
 		{
 			if (subtest == null)
-			{
 				throw new ArgumentNullException("Subtest argument is null.");	
-			}
 
 			this.subtestCollection.Enqueue(subtest);
 		}
@@ -126,9 +168,7 @@ namespace CSChecker.Definitions
 				subtest.Run();
 
 				if (subtest.Result == TestResult.Passed)
-				{
 					this.passed++;
-				}
 
 				// Enqueue it back in the collection.
 				this.subtestCollection.Enqueue(subtest);
@@ -164,7 +204,6 @@ namespace CSChecker.Definitions
 				this.Passed,
 				this.Total,
 				Math.Round(((double)(this.Passed * 100)) / this.Total, 2));
-			stringBuilder.AppendLine();
 
 			try
 			{
