@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("CSChecker")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("C# Testing Facility")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Codrin-Victor Poienaru")]
 [assembly: AssemblyProduct("CSChecker")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright © 2014, Codrin-Victor Poienaru")]
+[assembly: AssemblyTrademark("CSChecker")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
