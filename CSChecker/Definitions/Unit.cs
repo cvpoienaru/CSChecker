@@ -58,7 +58,7 @@ namespace CSChecker.Definitions
 		/// <summary>
 		/// 
 		/// </summary>
-		Stopwatch watch;
+		private Stopwatch watch;
 
 		/// <summary>
 		/// 
