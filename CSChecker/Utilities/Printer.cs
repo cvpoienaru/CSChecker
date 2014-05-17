@@ -46,6 +46,7 @@ namespace CSChecker.Utilities
 	/// </summary>
 	internal static class Printer
 	{
+		#region *** Methods ***
 		/// <summary>
 		/// Prints the specified character for the specified number of times.
 		/// </summary>
@@ -79,5 +80,6 @@ namespace CSChecker.Utilities
 				stringBuilder.Clear();
 			}
 		}
+		#endregion *** Methods ***
 	}
 }

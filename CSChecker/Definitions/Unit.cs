@@ -167,6 +167,7 @@ namespace CSChecker.Definitions
 		{
 			StringBuilder stringBuilder = new StringBuilder();
 			StringBuilder auxiliary = new StringBuilder();
+			byte[] digest;
 
 			auxiliary.AppendFormat("{0} ({1})", this.description.ToUpper(), DateTime.Now.ToString());
 			stringBuilder.AppendLine(Printer.PrintCharacter('=', this.width));
@@ -202,9 +203,10 @@ namespace CSChecker.Definitions
 			stringBuilder.AppendLine();
 			stringBuilder.AppendLine(Printer.PrintCharacter('=', this.width));
 
-			auxiliary.Clear();
-			byte[] digest = MessageDigest.Compute(Encoding.UTF8.GetBytes(stringBuilder.ToString()),
+			digest = MessageDigest.Compute(
+						Encoding.UTF8.GetBytes(stringBuilder.ToString()),
 						MessageDigestOutputSize.Bits256);
+			auxiliary.Clear();
 			foreach (byte b in digest)
 			{
 				auxiliary.AppendFormat("{0:x2}", b);

@@ -42,7 +42,7 @@ using System.Threading.Tasks;
 namespace CSChecker.Utilities
 {
 	/// <summary>
-	/// 
+	/// Specifies values representing the legal output sizes for the message digest standard.
 	/// </summary>
 	internal enum MessageDigestOutputSize
 	{
