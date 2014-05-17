@@ -202,6 +202,18 @@ namespace CSChecker.Definitions
 			stringBuilder.AppendLine();
 			stringBuilder.AppendLine(Printer.PrintCharacter('=', this.width));
 
+			auxiliary.Clear();
+			byte[] digest = MessageDigest.Compute(Encoding.UTF8.GetBytes(stringBuilder.ToString()),
+						MessageDigestOutputSize.Bits256);
+			foreach (byte b in digest)
+			{
+				auxiliary.AppendFormat("{0:x2}", b);
+			}
+
+			stringBuilder.AppendFormat("UNIT DIGEST: {0}", auxiliary.ToString());
+			stringBuilder.AppendLine();
+			stringBuilder.Append(Printer.PrintCharacter('=', this.width));
+
 			try
 			{
 				return stringBuilder.ToString();

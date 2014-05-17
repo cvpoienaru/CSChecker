@@ -42,42 +42,23 @@ using System.Threading.Tasks;
 namespace CSChecker.Utilities
 {
 	/// <summary>
-	/// Provides methods and properties for managing the output.
+	/// 
 	/// </summary>
-	internal static class Printer
+	internal enum MessageDigestOutputSize
 	{
 		/// <summary>
-		/// Prints the specified character for the specified number of times.
+		/// Indicates that the output size should be 256 bits.
 		/// </summary>
-		/// 
-		/// <param name="character">The character to be printed.</param>
-		/// <param name="times">The number of times to print the character.</param>
-		/// 
-		/// <returns>
-		/// A string containing the the specified character for the specified number of times.
-		/// </returns>
-		/// 
-		/// <exception cref="System.ArgumentException">
-		/// Exception thrown when the specified number of times to print the character is less than zero.
-		/// </exception>
-		public static string PrintCharacter (char character, int times)
-		{
-			if (times < 0)
-				throw new ArgumentException("The specified number of times is less than zero.");
+		Bits256 = 256,
 
-			StringBuilder stringBuilder = new StringBuilder();
+		/// <summary>
+		/// Indicates that the output size should be 384 bits.
+		/// </summary>
+		Bits384 = 384,
 
-			for (int i = 0; i < times; i++)
-				stringBuilder.Append(character);
-
-			try
-			{
-				return stringBuilder.ToString();
-			}
-			finally
-			{
-				stringBuilder.Clear();
-			}
-		}
+		/// <summary>
+		/// Indicates that the output size should be 512 bits.
+		/// </summary>
+		Bits512 = 512
 	}
 }

@@ -49,6 +49,8 @@
     <Compile Include="Definitions\TestResult.cs" />
     <Compile Include="Definitions\Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\MessageDigest.cs" />
+    <Compile Include="Utilities\MessageDigestOutputSize.cs" />
     <Compile Include="Utilities\Printer.cs" />
   </ItemGroup>
   <ItemGroup>
