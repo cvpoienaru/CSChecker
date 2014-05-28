@@ -51,7 +51,7 @@ namespace CSChecker.Definitions
 	{
 		#region *** Fields ***
 		/// <summary>
-		/// The default width of the digest.
+		/// The default width of the summary.
 		/// </summary>
 		private const int DefaultWidth = 80;
 
@@ -71,7 +71,7 @@ namespace CSChecker.Definitions
 		private int passed;
 
 		/// <summary>
-		/// The current width of the digest.
+		/// The current width of the summary.
 		/// </summary>
 		private int width;
 		#endregion *** Fields ***
@@ -84,7 +84,7 @@ namespace CSChecker.Definitions
 		/// </summary>
 		/// 
 		/// <param name="description">The description of the current test.</param>
-		/// <param name="width">The width of the digest.</param>
+		/// <param name="width">The width of the summary.</param>
 		/// 
 		/// <exception cref="System.ArgumentException">
 		/// Exception thrown when the description argument is null, empty or contains only white spaces or
@@ -163,10 +163,11 @@ namespace CSChecker.Definitions
 		{
 			for (int i = 0; i < this.subtestCollection.Count; i++)
 			{
-				// Dequeue a subtest from the collection and run it.
+				// Dequeue a subtest from the collection.
 				Subtest subtest = this.subtestCollection.Dequeue();
-				subtest.Run();
 
+				// Run the subtest and check its result.
+				subtest.Run();
 				if (subtest.Result == TestResult.Passed)
 					this.passed++;
 
@@ -184,13 +185,13 @@ namespace CSChecker.Definitions
 		{
 			StringBuilder stringBuilder = new StringBuilder();
 
-			// Build the digest for the current test.
+			// Build the summary for the current test.
 			// Add the description of the current test to the output.
 			stringBuilder.AppendLine(this.description);
 			stringBuilder.AppendLine(Printer.PrintCharacter('-', this.width));
 			for (int i = 0; i < this.subtestCollection.Count; i++)
 			{
-				// For each subtest, add the specific digest.
+				// For each subtest, add the specific summary.
 				Subtest subtest = this.subtestCollection.Dequeue();
 				stringBuilder.AppendFormat("\t{0}. {1}", i + 1, subtest.ToString());
 				stringBuilder.AppendLine();

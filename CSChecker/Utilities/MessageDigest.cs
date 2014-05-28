@@ -67,9 +67,7 @@ namespace CSChecker.Utilities
 		public static byte[] Compute (byte[] data, MessageDigestOutputSize outputSize)
 		{
 			if (data == null || data.Length == 0)
-			{
 				throw new ArgumentException("Data input is null or empty.");
-			}
 
 			byte[] digest = null;
 

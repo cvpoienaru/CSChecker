@@ -122,6 +122,18 @@ namespace CSChecker.Definitions
 
 
 
+		#region *** Properties ***
+		/// <summary>
+		/// 
+		/// </summary>
+		public string Description
+		{
+			get { return this.description; }
+		}
+		#endregion *** Properties ***
+
+
+
 		#region *** Methods ***
 		/// <summary>
 		/// 
@@ -167,7 +179,7 @@ namespace CSChecker.Definitions
 		{
 			StringBuilder stringBuilder = new StringBuilder();
 			StringBuilder auxiliary = new StringBuilder();
-			byte[] digest;
+			byte[] summary;
 
 			auxiliary.AppendFormat("{0} ({1})", this.description.ToUpper(), DateTime.Now.ToString());
 			stringBuilder.AppendLine(Printer.PrintCharacter('=', this.width));
@@ -189,7 +201,7 @@ namespace CSChecker.Definitions
 
 			stringBuilder.AppendFormat(
 				"Average Execution Time : {0} ms",
-				Math.Round(((double)this.watch.ElapsedMilliseconds) / this.total, 2));
+				Math.Round(((double)this.watch.ElapsedMilliseconds) / this.testCollection.Count, 2));
 			stringBuilder.AppendLine();
 			stringBuilder.AppendFormat(
 				"Total Execution Time   : {0} ms",
@@ -203,11 +215,11 @@ namespace CSChecker.Definitions
 			stringBuilder.AppendLine();
 			stringBuilder.AppendLine(Printer.PrintCharacter('=', this.width));
 
-			digest = MessageDigest.Compute(
+			summary = MessageDigest.Compute(
 						Encoding.UTF8.GetBytes(stringBuilder.ToString()),
 						MessageDigestOutputSize.Bits256);
 			auxiliary.Clear();
-			foreach (byte b in digest)
+			foreach (byte b in summary)
 			{
 				auxiliary.AppendFormat("{0:x2}", b);
 			}

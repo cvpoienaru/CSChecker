@@ -90,11 +90,7 @@ namespace CSChecker.Definitions
 		public TestResult Result
 		{
 			get { return this.result; }
-
-			protected set
-			{
-				this.result = value;
-			}
+			protected set { this.result = value; }
 		}
 		#endregion *** Properties ***
 
@@ -115,7 +111,7 @@ namespace CSChecker.Definitions
 		{
 			StringBuilder stringBuilder = new StringBuilder();
 
-			// Build the digest for the current subtest.
+			// Build the summary for the current subtest.
 			stringBuilder.AppendFormat("[{0}] -> {1}", this.result, this.description);
 
 			try

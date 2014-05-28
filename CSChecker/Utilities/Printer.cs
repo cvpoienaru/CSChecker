@@ -26,7 +26,7 @@
  ***	to, procurement of substitute goods or services; loss of use, data, or profits; or		***
  ***	business interruption) however caused and on any theory of liability, whether in		***
  ***	contract, strict liability, or tort (including negligence or otherwise) arising in		***
- ***	any way out of the use of this software, even if advised of the possibility of such		***
+ ***	any way out of the use of this software, even if advised of	 the possibility of such		***
  ***	damage.																					***
  ***																							***
  **************************************************************************************************
@@ -35,6 +35,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,6 +79,27 @@ namespace CSChecker.Utilities
 			finally
 			{
 				stringBuilder.Clear();
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// 
+		/// <param name="summary"></param>
+		/// <param name="fileName"></param>
+		public static void PrintSummary (string summary, string fileName)
+		{
+			if (string.IsNullOrWhiteSpace(summary))
+				throw new ArgumentException("");
+
+			if (string.IsNullOrWhiteSpace(fileName))
+				throw new ArgumentException("");
+
+			using (StreamWriter streamWriter = new StreamWriter(fileName, false))
+			{
+				streamWriter.Write(summary);
+				streamWriter.Close();
 			}
 		}
 		#endregion *** Methods ***
