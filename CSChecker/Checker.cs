@@ -73,7 +73,7 @@ namespace CSChecker
 		public Checker (string path)
 		{
 			if (string.IsNullOrWhiteSpace(path))
-				throw new ArgumentException("");
+				throw new ArgumentException("Invalid path.");
 
 			this.path = path;
 			this.unitCollection = new Queue<Unit>(0);

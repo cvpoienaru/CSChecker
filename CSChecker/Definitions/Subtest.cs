@@ -63,7 +63,7 @@ namespace CSChecker.Definitions
 
 		#region *** Constructors ***
 		/// <summary>
-		/// Initializes a new instance of CSChecker.Definitions.Subtest class.
+		/// Initializes a new instance of <see cref="CSChecker.Definitions.Subtest"/> class.
 		/// </summary>
 		/// 
 		/// <param name="description">The description of the current subtest.</param>
@@ -109,18 +109,18 @@ namespace CSChecker.Definitions
 		/// <returns>Returns the string representation of the current subtest.</returns>
 		public override string ToString ()
 		{
-			StringBuilder stringBuilder = new StringBuilder();
+			StringBuilder summary = new StringBuilder();
 
 			// Build the summary for the current subtest.
-			stringBuilder.AppendFormat("[{0}] -> {1}", this.result, this.description);
+			summary.AppendFormat("[{0}] -> {1}", this.result, this.description);
 
 			try
 			{
-				return stringBuilder.ToString();
+				return summary.ToString();
 			}
 			finally
 			{
-				stringBuilder.Clear();
+				summary.Clear();
 			}
 		}
 		#endregion *** Methods ***

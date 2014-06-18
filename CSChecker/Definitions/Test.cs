@@ -80,7 +80,7 @@ namespace CSChecker.Definitions
 
 		#region *** Constructors ***
 		/// <summary>
-		/// Initializes a new instance of CSChecker.Definitions.Test class.
+		/// Initializes a new instance of <see cref="CSChecker.Definitions.Test"/> class.
 		/// </summary>
 		/// 
 		/// <param name="description">The description of the current test.</param>
@@ -104,7 +104,7 @@ namespace CSChecker.Definitions
 		}
 
 		/// <summary>
-		/// Initializes a new instance of CSChecker.Definitions.Test class.
+		/// Initializes a new instance of <see cref="CSChecker.Definitions.Test"/> class.
 		/// </summary>
 		/// 
 		/// <param name="description">The description of the current test.</param>
@@ -183,24 +183,24 @@ namespace CSChecker.Definitions
 		/// <returns>Returns the string representation of the current test.</returns>
 		public override string ToString ()
 		{
-			StringBuilder stringBuilder = new StringBuilder();
+			StringBuilder summary = new StringBuilder();
 
 			// Build the summary for the current test.
 			// Add the description of the current test to the output.
-			stringBuilder.AppendLine(this.description);
-			stringBuilder.AppendLine(Printer.PrintCharacter('-', this.width));
+			summary.AppendLine(this.description);
+			summary.AppendLine(Printer.PrintCharacter('-', this.width));
 			for (int i = 0; i < this.subtestCollection.Count; i++)
 			{
 				// For each subtest, add the specific summary.
 				Subtest subtest = this.subtestCollection.Dequeue();
-				stringBuilder.AppendFormat("\t{0}. {1}", i + 1, subtest.ToString());
-				stringBuilder.AppendLine();
+				summary.AppendFormat("\t{0}. {1}", i + 1, subtest.ToString());
+				summary.AppendLine();
 				this.subtestCollection.Enqueue(subtest);
 			}
 
 			// Add the conclusion for the current test (number of passed tests and percentage).
-			stringBuilder.AppendLine(Printer.PrintCharacter('-', this.width));
-			stringBuilder.AppendFormat(
+			summary.AppendLine(Printer.PrintCharacter('-', this.width));
+			summary.AppendFormat(
 				"Passed: {0}/{1} => {2} %",
 				this.Passed,
 				this.Total,
@@ -208,11 +208,11 @@ namespace CSChecker.Definitions
 
 			try
 			{
-				return stringBuilder.ToString();
+				return summary.ToString();
 			}
 			finally
 			{
-				stringBuilder.Clear();
+				summary.Clear();
 			}
 		}
 		#endregion *** Methods ***

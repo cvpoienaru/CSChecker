@@ -26,7 +26,7 @@
  ***	to, procurement of substitute goods or services; loss of use, data, or profits; or		***
  ***	business interruption) however caused and on any theory of liability, whether in		***
  ***	contract, strict liability, or tort (including negligence or otherwise) arising in		***
- ***	any way out of the use of this software, even if advised of	 the possibility of such		***
+ ***	any way out of the use of this software, even if advised of	 the possibility of such	***
  ***	damage.																					***
  ***																							***
  **************************************************************************************************
@@ -56,7 +56,7 @@ namespace CSChecker.Utilities
 		/// <param name="times">The number of times to print the character.</param>
 		/// 
 		/// <returns>
-		/// A string containing the the specified character for the specified number of times.
+		/// A string containing the specified character for the specified number of times.
 		/// </returns>
 		/// 
 		/// <exception cref="System.ArgumentException">
@@ -91,10 +91,10 @@ namespace CSChecker.Utilities
 		public static void PrintSummary (string summary, string fileName)
 		{
 			if (string.IsNullOrWhiteSpace(summary))
-				throw new ArgumentException("");
+				throw new ArgumentException("Invalid summary.");
 
 			if (string.IsNullOrWhiteSpace(fileName))
-				throw new ArgumentException("");
+				throw new ArgumentException("Invalid file name.");
 
 			using (StreamWriter streamWriter = new StreamWriter(fileName, false))
 			{
