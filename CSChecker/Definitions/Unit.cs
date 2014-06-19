@@ -96,6 +96,11 @@ namespace CSChecker.Definitions
 		/// 
 		/// <param name="description">The description of the current unit.</param>
 		/// <param name="width">The width of the summary.</param>
+		/// 
+		/// <exception cref="System.ArgumentException">
+		/// Exception thrown when the description argument is null, empty or contains only white spaces or
+		/// when the specified width is less than the minimum valid width.
+		/// </exception>
 		public Unit (string description, int width)
 		{
 			if (string.IsNullOrWhiteSpace(description))
