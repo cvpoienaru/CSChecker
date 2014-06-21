@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSChecker", "CSChecker\CSChecker.csproj", "{74769FB7-BEDC-4CC6-99A1-F273107CCD5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Definitions", "Definitions\Definitions.csproj", "{2B52940D-14AC-461A-9A57-22EA5DBB6CEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{74769FB7-BEDC-4CC6-99A1-F273107CCD5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74769FB7-BEDC-4CC6-99A1-F273107CCD5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74769FB7-BEDC-4CC6-99A1-F273107CCD5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B52940D-14AC-461A-9A57-22EA5DBB6CEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B52940D-14AC-461A-9A57-22EA5DBB6CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B52940D-14AC-461A-9A57-22EA5DBB6CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B52940D-14AC-461A-9A57-22EA5DBB6CEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

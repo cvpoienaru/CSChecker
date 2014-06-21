@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{74769FB7-BEDC-4CC6-99A1-F273107CCD5C}</ProjectGuid>
+    <ProjectGuid>{2B52940D-14AC-461A-9A57-22EA5DBB6CEC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CSChecker</RootNamespace>
-    <AssemblyName>CSChecker</AssemblyName>
+    <AssemblyName>Definitions</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,7 +20,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,9 +28,6 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -43,18 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Checker.cs" />
-    <Compile Include="Printer.cs" />
+    <Compile Include="Definitions\Subtest.cs" />
+    <Compile Include="Definitions\Test.cs" />
+    <Compile Include="Definitions\TestResult.cs" />
+    <Compile Include="Definitions\Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\MessageDigest.cs" />
+    <Compile Include="Utilities\MessageDigestOutputSize.cs" />
+    <Compile Include="Utilities\Printer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CSChecker.licenseheader" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Definitions\Definitions.csproj">
-      <Project>{2b52940d-14ac-461a-9a57-22ea5dbb6cec}</Project>
-      <Name>Definitions</Name>
-    </ProjectReference>
+    <None Include="Definitions.licenseheader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

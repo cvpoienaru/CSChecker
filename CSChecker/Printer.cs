@@ -26,7 +26,7 @@
  ***	to, procurement of substitute goods or services; loss of use, data, or profits; or		***
  ***	business interruption) however caused and on any theory of liability, whether in		***
  ***	contract, strict liability, or tort (including negligence or otherwise) arising in		***
- ***	any way out of the use of this software, even if advised of	 the possibility of such	***
+ ***	any way out of the use of this software, even if advised of the possibility of such		***
  ***	damage.																					***
  ***																							***
  **************************************************************************************************
@@ -40,54 +40,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSChecker.Utilities
+namespace CSChecker
 {
 	/// <summary>
 	/// Provides methods and properties for managing the output.
 	/// </summary>
-	internal static class Printer
+	public class Printer
 	{
-		#region *** Methods ***
 		/// <summary>
-		/// Prints the specified character for the specified number of times.
+		/// Prints the current summary to the specified file.
 		/// </summary>
 		/// 
-		/// <param name="character">The character to be printed.</param>
-		/// <param name="times">The number of times to print the character.</param>
-		/// 
-		/// <returns>
-		/// A string containing the specified character for the specified number of times.
-		/// </returns>
+		/// <param name="summary">The summary to be printed.</param>
+		/// <param name="fileName">The name of the file where to print the summary.</param>
 		/// 
 		/// <exception cref="System.ArgumentException">
-		/// Exception thrown when the specified number of times to print the character is less than zero.
+		/// Exception thrown when the summary argument or file name argument is null, empty or contains only
+		/// white spaces.
 		/// </exception>
-		public static string PrintCharacter (char character, int times)
-		{
-			if (times < 0)
-				throw new ArgumentException("The specified number of times is less than zero.");
-
-			StringBuilder stringBuilder = new StringBuilder();
-
-			for (int i = 0; i < times; i++)
-				stringBuilder.Append(character);
-
-			try
-			{
-				return stringBuilder.ToString();
-			}
-			finally
-			{
-				stringBuilder.Clear();
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// 
-		/// <param name="summary"></param>
-		/// <param name="fileName"></param>
 		public static void PrintSummary (string summary, string fileName)
 		{
 			if (string.IsNullOrWhiteSpace(summary))
@@ -102,6 +72,5 @@ namespace CSChecker.Utilities
 				streamWriter.Close();
 			}
 		}
-		#endregion *** Methods ***
 	}
 }

@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CSChecker")]
-[assembly: AssemblyDescription("C# Testing Facility")]
+[assembly: AssemblyTitle("Definitions")]
+[assembly: AssemblyDescription("Shared library for direct access to definitions")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Codrin-Victor Poienaru")]
 [assembly: AssemblyProduct("CSChecker")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a9c3d7a3-c136-4cf9-aebc-3a0b21cb1213")]
+[assembly: Guid("9df28475-c8d4-4935-b6ac-2423721caf1a")]
 
 // Version information for an assembly consists of the following four values:
 //
