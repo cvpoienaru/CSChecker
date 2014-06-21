@@ -58,6 +58,12 @@ namespace CSChecker
 		private string path;
 
 		/// <summary>
+		/// True if the summary of the current unit should be written in separate files at each new
+		/// checker execution, false otherwise.
+		/// </summary>
+		private bool overwrite;
+
+		/// <summary>
 		/// A collection of all the units composing the current session of the checker.
 		/// </summary>
 		private Queue<Unit> unitCollection;
@@ -87,6 +93,20 @@ namespace CSChecker
 
 
 
+		#region *** Properties ***
+		/// <summary>
+		/// Gets or sets a value indicating if the summary of the current unit should be written in separate
+		/// files at each new checker execution.
+		/// </summary>
+		public bool Overwrite
+		{
+			get { return this.overwrite; }
+			set { this.overwrite = value; }
+		}
+		#endregion *** Properties ***
+
+
+
 		#region *** Methods ***
 		/// <summary>
 		/// Adds a new unit to the collection.
@@ -110,12 +130,9 @@ namespace CSChecker
 		/// </summary>
 		/// 
 		/// <param name="description">The description of the current unit.</param>
-		/// <param name="overwrite">
-		/// True if the summary of the current unit should be written in separate files at each new
-		/// execution of the checker, false otherwise.</param>
 		/// 
 		/// <returns>Returns the exact path of the file used for writing the summary.</returns>
-		private string PrepareFile (string description, bool overwrite)
+		private string PrepareFile (string description)
 		{
 			string directoryPath = this.path + Path.DirectorySeparatorChar + description;
 			string filePath = directoryPath + Path.DirectorySeparatorChar + description;
@@ -135,7 +152,7 @@ namespace CSChecker
 
 			// If the original file for the current unit exists, check if we should overwrite it.
 			// If this is the case, use the original file for writing.
-			if (overwrite)
+			if (this.overwrite)
 				return filePath + ".txt";
 
 			// Otherwise, create a new file using a correct indexer in order to exist no conflicts between
@@ -161,7 +178,7 @@ namespace CSChecker
 
 				// Run the unit and print the summary to the corresponding output file.
 				unit.Run();
-				Printer.PrintSummary(unit.ToString(), this.PrepareFile(unit.Description, false));
+				Printer.PrintSummary(unit.ToString(), this.PrepareFile(unit.Description));
 
 				// Enqueue it back in the collection.
 				this.unitCollection.Enqueue(unit);
